@@ -27,10 +27,17 @@ jobs:
     - name: Lint backend
       run: |
         cd Backend
+        # Install Black explicitly
+        pip install black
+        # Debug: Show the contents of the file being linted
+        cat app/core/database.py
+        # Run Flake8 checks
         flake8 app --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 app --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        # Format code with Black
         black app
-        black --check app
+        # Debug: Show diff if Black check fails
+        black --check app || (black --diff app; exit 1)
 
   build-frontend:
     needs: lint-backend
