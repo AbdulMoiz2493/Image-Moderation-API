@@ -1,20 +1,22 @@
 # app/services/image_analysis.py
 
-from google.cloud import vision
-import logging
-from typing import Dict, Any, Optional, List
-import os
-import numpy as np
-from PIL import Image, ImageStat
+import asyncio
+import hashlib
 import io
+import logging
+import os
+from concurrent.futures import ThreadPoolExecutor
+from typing import Any, Dict, List, Optional
+
+import aiohttp
 import cv2
+import numpy as np
 import torch
 import torchvision.transforms as transforms
-from transformers import pipeline, AutoImageProcessor, AutoModelForImageClassification
-import asyncio
-import aiohttp
-from concurrent.futures import ThreadPoolExecutor
-import hashlib
+from google.cloud import vision
+from PIL import Image, ImageStat
+from transformers import (AutoImageProcessor, AutoModelForImageClassification,
+                          pipeline)
 
 logger = logging.getLogger(__name__)
 

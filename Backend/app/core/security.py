@@ -1,8 +1,9 @@
-from fastapi import Depends, HTTPException, status
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from app.core.config import settings
 import secrets
-from typing import Dict, Any
+from typing import Any, Dict
+
+from app.core.config import settings
+from fastapi import Depends, HTTPException, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 # HTTP Bearer security scheme
 security = HTTPBearer()
@@ -60,8 +61,9 @@ async def get_admin_token(
 
 async def log_usage(token: str, endpoint: str):
     """Log API usage to the database"""
-    from app.core.database import get_db
     from datetime import datetime
+
+    from app.core.database import get_db
 
     db = get_db()
     usage_doc = {"token": token, "endpoint": endpoint, "timestamp": datetime.utcnow()}

@@ -1,7 +1,7 @@
+from app.api import auth, moderation
+from app.core.database import close_mongo_connection, connect_to_mongo
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api import auth, moderation
-from app.core.database import connect_to_mongo, close_mongo_connection
 
 app = FastAPI(
     title="Image Moderation API",
