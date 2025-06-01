@@ -37,7 +37,7 @@ async def connect_to_mongo():
 
 async def close_mongo_connection():
     """Close database connection"""
-    global mongodb_client
+    global mongodb_client  # noqa: F824
     if mongodb_client:
         mongodb_client.close()
         logger.info("Disconnected from MongoDB")
