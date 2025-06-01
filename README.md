@@ -1,4 +1,4 @@
-# 🖼️ Image Moderation App
+# 🖼️ Image Moderation App 
 
 This repository contains a full-stack application for **image moderation** using FastAPI (backend) and Vite + React (frontend). The project uses Docker for containerization and GitHub Actions for CI/CD.
 
