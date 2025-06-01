@@ -15,8 +15,7 @@ import torch
 import torchvision.transforms as transforms
 from google.cloud import vision
 from PIL import Image, ImageStat
-from transformers import (AutoImageProcessor, AutoModelForImageClassification,
-                          pipeline)
+from transformers import AutoImageProcessor, AutoModelForImageClassification, pipeline
 
 logger = logging.getLogger(__name__)
 
